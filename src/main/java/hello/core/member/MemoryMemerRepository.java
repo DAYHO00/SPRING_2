@@ -1,0 +1,20 @@
+package hello.core.member;
+
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+
+public class MemoryMemerRepository implements MemberRepository{
+
+    private static Map<Long, Member>  store = new Hashtable<>();
+
+    @Override
+    public void save(Member member) {
+        store.put(member.getId(),member);
+    }
+
+    @Override
+    public Member findById(Long memberId) {
+        return store.get(memberId);
+    }
+}
